@@ -1,0 +1,525 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CSharp系列（一）入门 | Visen</title><meta name="keywords" content="学习笔记"><meta name="author" content="Visen Cao"><meta name="copyright" content="Visen Cao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="引子&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;👋这里是Visen.最近在质疑自己学习的高效性，目前学习形式主要是一边屏幕是书籍&#x2F;视频，另一边是Gitmind做思维导图，我是中间的转换器。虽然发现思维导图做的不错，但知识没进脑子，后续想再查找知识，思维导图省略得太多，还得一个个点开才能穿起来，思维常常打断，又不得不去翻书，吭哧吭哧却也没了之前读时的通">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSharp系列（一）入门">
+<meta property="og:url" content="https://supervisen.github.io/2021/12/3.1Csharp%E7%AC%94%E8%AE%B01/index.html">
+<meta property="og:site_name" content="Visen">
+<meta property="og:description" content="引子&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;👋这里是Visen.最近在质疑自己学习的高效性，目前学习形式主要是一边屏幕是书籍&#x2F;视频，另一边是Gitmind做思维导图，我是中间的转换器。虽然发现思维导图做的不错，但知识没进脑子，后续想再查找知识，思维导图省略得太多，还得一个个点开才能穿起来，思维常常打断，又不得不去翻书，吭哧吭哧却也没了之前读时的通">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121039027.jpeg">
+<meta property="article:published_time" content="2021-12-04T11:50:50.000Z">
+<meta property="article:modified_time" content="2022-05-12T02:57:52.000Z">
+<meta property="article:author" content="Visen Cao">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121039027.jpeg"><link rel="shortcut icon" href="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121051907.jpeg"><link rel="canonical" href="https://supervisen.github.io/2021/12/3.1Csharp%E7%AC%94%E8%AE%B01/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CSharp系列（一）入门',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-12 10:57:52'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/iconfont/iconfont.css"><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121051907.jpeg" onerror="onerror=null;src='https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121055307.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://nwuzmed.ga/"><i class="fa-fw fa fa-flask"></i><span> DAC导航</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-bijiben"></i><span> 笔记本</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/Csharp/"><i class="fa-fw iconfont icon-csharp"></i><span> Csharp</span></a></li><li><a class="site-page child" href="/categories/Python/"><i class="fa-fw iconfont icon-python"></i><span> Python</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa fa-link"></i><span> 博客工具</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="http://guozhivip.com/imgs.html"><i class="fa-fw iconfont icon-charutupian"></i><span> 高清图源</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.emojiall.com/zh-hans"><i class="fa-fw iconfont icon-biaoqingbao"></i><span> 表情包词典</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://console.leancloud.cn/login?from=%2Fapps"><i class="fa-fw iconfont icon-pinglun"></i><span> 评论管理</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.123pan.com/login"><i class="fa-fw iconfont icon-yunpan"></i><span> 123云盘</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuozhe"></i><span> 关于作者</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blackBoard/"><i class="fa-fw iconfont icon-xiaoheiban"></i><span> 小黑板</span></a></li><li><a class="site-page child" href="/heartWay/"><i class="fa-fw iconfont icon-step_count"></i><span> 成长历程</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121039027.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Visen</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://nwuzmed.ga/"><i class="fa-fw fa fa-flask"></i><span> DAC导航</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-bijiben"></i><span> 笔记本</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/Csharp/"><i class="fa-fw iconfont icon-csharp"></i><span> Csharp</span></a></li><li><a class="site-page child" href="/categories/Python/"><i class="fa-fw iconfont icon-python"></i><span> Python</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa fa-link"></i><span> 博客工具</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="http://guozhivip.com/imgs.html"><i class="fa-fw iconfont icon-charutupian"></i><span> 高清图源</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.emojiall.com/zh-hans"><i class="fa-fw iconfont icon-biaoqingbao"></i><span> 表情包词典</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://console.leancloud.cn/login?from=%2Fapps"><i class="fa-fw iconfont icon-pinglun"></i><span> 评论管理</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.123pan.com/login"><i class="fa-fw iconfont icon-yunpan"></i><span> 123云盘</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuozhe"></i><span> 关于作者</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blackBoard/"><i class="fa-fw iconfont icon-xiaoheiban"></i><span> 小黑板</span></a></li><li><a class="site-page child" href="/heartWay/"><i class="fa-fw iconfont icon-step_count"></i><span> 成长历程</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CSharp系列（一）入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-04T11:50:50.000Z" title="发表于 2021-12-04 19:50:50">2021-12-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-12T02:57:52.000Z" title="更新于 2022-05-12 10:57:52">2022-05-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Net%E5%BC%80%E5%8F%91/">Net开发</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Net%E5%BC%80%E5%8F%91/Csharp%E5%9F%BA%E7%A1%80/">Csharp基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CSharp系列（一）入门"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a><center>引子</center></h2><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;👋这里是Visen.最近在质疑自己学习的高效性，目前学习形式主要是一边屏幕是书籍&#x2F;视频，另一边是Gitmind做思维导图，我是中间的转换器。虽然发现思维导图做的不错，但知识没进脑子，后续想再查找知识，思维导图省略得太多，还得一个个点开才能穿起来，思维常常打断，又不得不去翻书，吭哧吭哧却也没了之前读时的通透。还是需要改变了！💪但是还是不肯丢失思维导图，刚好md可以使用Mermaid插件实现这功能，md文件又支持局内搜索，我懒得去搞云盘存储，以后学习笔记放到这个博客，也希望大家能够能给予意见。</p>
+<p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本系列全程使用Net4.8框架下控制台应用（console）来进行编程，开发IDE使用visual studio。虽然更新Net6+C#10.0后，程序样式可以采取新的简化样式（隐式using指令），但是我考虑直接过渡学习路线很陡峭，更新节奏过于激进，反而一知半解</p>
+<p>学习路线为__语言C#__-&gt;<strong>类库</strong>-&gt;<strong>框架Net</strong>，包括：</p>
+<ul>
+<li>介绍入门知识：C#学习方法、学习安排以及开发环境</li>
+<li>介绍C#基础知识等</li>
+<li>C#进阶知识和平时遇到的编程问题和实现的demo</li>
+</ul>
+<p>以刘铁猛《<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13b411b7Ht/?spm_id_from=333.788.recommend_more_video.4">C#语言入门详解</a>》B站视频为主体，配合刘老师当时的<a target="_blank" rel="noopener" href="https://www.123pan.com/s/nmk9-v788H">微软C#语言规范</a>并比对<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/">微软最新C#文档</a>，再根据自己理解进行记录和编辑，不追求微软文档的全面而在乎把各部分理清，在使用时能快速理解，更好翻文档和上手。</p>
+<p>扩展书籍推荐：<a target="_blank" rel="noopener" href="https://www.123pan.com/s/nmk9-d788H">果壳里的C#</a>、<a target="_blank" rel="noopener" href="https://www.123pan.com/s/nmk9-Au88H">CLR via C#</a>、<a target="_blank" rel="noopener" href="https://csharpindepth.com/">C# in DEPTH</a>、<a target="_blank" rel="noopener" href="https://www.123pan.com/s/nmk9-ou88H">其他</a></p>
+<p>本次更新的是入门篇，记录<strong>C#简介</strong>、<strong>学习方法</strong>和<strong>开发环境</strong></p>
+<hr>
+<h2 id="CSharp与Net"><a href="#CSharp与Net" class="headerlink" title="CSharp与Net"></a><center>CSharp与Net</h2><h3 id="一、Csharp是什么？"><a href="#一、Csharp是什么？" class="headerlink" title="一、Csharp是什么？"></a>一、Csharp是什么？</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;C#（Csharp）由Delphi语言开发者Anders Hejlsberg在构建.Net框架期间主持开发，是微软推出的一款<strong>面向对象</strong>的编程语言，其语法与 C++类似，但在编程过程中要比 C++ 简单。</p>
+<p>其特点主要是</p>
+<ul>
+<li><p><strong>简单安全</strong>：不使用指针（并不是没有指针），数据类型比C、C++、Java多，并且固定大小（可在文档中查看）；提供namespace命名空间来管理C#文件，相当于一个文件夹，里面包含一个或多个类；不允许一些不安全操作</p>
+</li>
+<li><p><strong>面向对象</strong>（下一篇将详细讲解）</p>
+<ul>
+<li>封装：代码封装，使用定义好的类、方法等，不需要考虑细节，只需要知道对应参数（提升代码安全性）</li>
+<li>继承：支持对父类的继承，但仅支持单继承（体现代码复用性）</li>
+<li>多态：通过继承和实现接口的方式，让类或接口中的成员表现出不同的作用（体现代码复用性和灵活性）</li>
+</ul>
+</li>
+<li><p><strong>支持跨平台</strong>：当然，目前C#语言支持跨平台，但是一些框架不支持，比如WPF等</p>
+</li>
+<li><p><strong>开发多种类型的程序</strong>：进入Visual Studio后，可选择各类项目</p>
+</li>
+</ul>
+<h3 id="二、Net是什么？两者的关系？"><a href="#二、Net是什么？两者的关系？" class="headerlink" title="二、Net是什么？两者的关系？"></a>二、Net是什么？两者的关系？</h3><blockquote>
+<p>.NET是开发平台（框架Framework），是一个<strong>抽象</strong>的平台概念</p>
+</blockquote>
+<p>.NET 框架是一个多语言组件开发和执行环境。.NET SDK（Software Development Kit，软件开发工具包）是一组用于开发和运行 .NET 应用程序的库和工具，是我们能接触到的<strong>具体的</strong>库和工具。（NET SDK是Net概念的具象化&#x2F;实例化）</p>
+<p>包括以下组件：CLI、虚拟机CLR（Common Language Runtime,公共语言运行时）、dotnet驱动程序、编译器等。</p>
+<p>具体可以查看<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/core/introduction">微软 Net简介</a></p>
+<blockquote>
+<p>C# 是一种在.NET平台上运行的编程语言</p>
+</blockquote>
+<p>进入VS软件，可以看到有编程语言的选择，比如Python、C++等，而在.NET平台上C#使用最多。</p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121039049.png" alt="Img"></p>
+<p>注意：它并不是.NET的一部分，总是运行在.NET Framework中才被误解</p>
+<hr>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a><center>开发环境</h2><p>.NET的集成开发环境包括：Visual Studio、Rider，但是后者在创建一些桌面端框架（Winform、WPF）时，表现得没VS便利，还是VS比较推荐</p>
+<p>下面介绍VS的安装和使用</p>
+<h3 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h3><p>进入<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/vs/">官网</a>，这里推荐下载专业版，点击exe文件开始安装</p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121039721.png" alt="image-20220117190954186"></p>
+<p>进入Visual Studio installer安装所需模块（后续可修改），建议安装如下</p>
+<ul>
+<li>工作负荷：.Net桌面开发、通用Window平台开发、数据存储和处理</li>
+<li>单个组件：勾选上Help Viewer</li>
+<li>语言包：中文＋英文</li>
+<li>安装位置：推荐C盘</li>
+</ul>
+<p>安装后点击启动，这里我们创建Window环境下的控制台Console项目开始学习</p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040146.png" alt="Img"></p>
+<p>命名后，点击创建（这里推荐使用特定地方来放置我们学习例程）</p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040163.png" alt="Img"></p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040764.png" alt="Img"></p>
+<p>我们在main函数内输入cw，然后连续点击两下tab键，并输入hello,world，点击执行</p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040115.png" alt="Img"></p>
+<p>就能看到我们的第一个程序</p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040650.png" alt="Img"></p>
+<h3 id="二、C-in-VS"><a href="#二、C-in-VS" class="headerlink" title="二、C# in VS"></a>二、C# in VS</h3><p>程序的编写按照步骤分为编辑-&gt;编译-&gt;调试-&gt;发布</p>
+<p>这里介绍开发工具是如何实现我们的编程开发步骤，顺便也将VS界面进行简单介绍，为后续学习做准备</p>
+<p>需要注意的是，编译过程是依赖于Net框架的编译器，是隐式编译，这里不做讲解</p>
+<h4 id="1-C-文件结构"><a href="#1-C-文件结构" class="headerlink" title="1. C#文件结构"></a>1. C#文件结构</h4><blockquote>
+<p>介绍C#代码是如何存放&#x2F;C#设计之初是如何整理自己结构来方便开发的</p>
+</blockquote>
+<p><strong>类class构成程序主体（甚至程序本身也是类），namespace以树形结构来组织类和其他类型</strong></p>
+<p>以我们运行的Hello，world程序为例</p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040901.png" alt="image-20220118113746320"></p>
+<p><code>解决方案Solution</code>中可存放着多个<code>项目Project</code>（对应于命名空间namespace），<code>项目Project</code>&#x3D;<code>Program.cs</code>（C#程序，文件后缀cs代表csharp）+ <code>reference</code>（供程序主体using的引用集和C#配置文件） + <code>Properties</code>（程序配置文件，如程序的属性、程序各阶段的设置等）</p>
+<ol>
+<li>右击解决方案,点击添加-&gt;新建项目-&gt;添加一个控制台项目(Solution&#x3D;Project1+Project2+…)</li>
+</ol>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040284.png" alt="image-20220118104758309"></p>
+<ol start="2">
+<li>双击<code>Properties</code>,可以看见我们程序各个过程的设置，比如</li>
+</ol>
+<ul>
+<li><p>创建阶段（软件图标，程序集名称、默认的命名空间、程序类型等），其中程序集信息对应着Assemblyinfo.cs。</p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040933.png" alt="image-20220118105504398"></p>
+</li>
+<li><p>程序编辑阶段（所需的资源resource）</p>
+</li>
+<li><p>调试阶段（本地调试、远程调试还是使用Web浏览器调试）</p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040343.png" alt="image-20220118105903741"></p>
+</li>
+<li><p>生成阶段（生成时输出路径、软件适配的平台等）</p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040527.png" alt="image-20220119094819197"></p>
+</li>
+</ul>
+<ol start="3">
+<li><p>右击<code>引用</code>-&gt;添加引用，唤出引用管理器，就可以对需引用的类库（类库&#x3D;类的仓库&#x3D;名称空间的物理基础）进行管理</p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040656.png" alt="image-20220118114527992"></p>
+</li>
+<li><p>双击<code>Program.cs</code>，就能进入Csharp程序主体，展开树形结构，可以看到里面包含的类和方法（成员函数）</p>
+</li>
+</ol>
+<h4 id="2-类库的引用"><a href="#2-类库的引用" class="headerlink" title="2. 类库的引用"></a>2. 类库的引用</h4><blockquote>
+<p>类库类似于python库，using（C#）相当于import（python），为程序提供了很高的扩展性和代码复用性。可以把自己程序重复使用，不用重复造轮子，在这里较早地介绍。引用分为<strong>DLL引用</strong>和<strong>项目引用</strong></p>
+</blockquote>
+<h5 id="2-1-DLL引用-黑盒引用"><a href="#2-1-DLL引用-黑盒引用" class="headerlink" title="2.1 DLL引用(黑盒引用)"></a>2.1 DLL引用(黑盒引用)</h5><p>DLL引用时，程序员没有源代码，需要查阅文档（记录ddl文件中有哪些名称空间，名称空间包含什么类，类中有什么方法），于是代码bug需要作者去更改，存在依赖关系。（优秀程序追求“高内聚”“低耦合”，耦合关系就是依赖关系，常用UML（通用建模语言）类图展示类和类库之间的关系，使用箭头表示依赖）</p>
+<p>示例：引用微软的Form类</p>
+<ol>
+<li><strong>明确引用哪个库</strong>：微软的类可以查询help Viewer，找到该引用哪个类库</li>
+</ol>
+<ul>
+<li><p>点击<code>帮助</code>-&gt;<code>添加和删除帮助内容</code>，把所需的微软文档（.NET API reference英语和Visual Studio 2015：Visual Basic和Visual C#）添加到本地</p>
+<img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040551.png" alt="image-20220118115915356" style="zoom: 80%;" />
+
+<img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040678.png" alt="image-20220118120212545"  />
+
+<p>点击<code>帮助</code>-&gt;<code>查看帮助</code>-&gt;<code>在目录中显示主题</code>，就能看到我们添加的内容</p>
+<img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040863.png" alt="image-20220118112037749" style="zoom:80%;" />
+
+<img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040783.png" alt="image-20220118125429108" style="zoom:80%;" />
+
+<p>搜索Form class（Form类)，会显示出该类的从属关系以及使用方法，可以知道我们应该引用System.Windows.Forms.dll文件<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/?view=net-6.0">微软直接提供的命名空间</a></p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040080.png" alt="image-20220118125908145"></p>
+</li>
+</ul>
+<ol start="2">
+<li><strong>开始引用</strong>：点击<code>项目管理器</code>—<code>右键引用/或者右键项目（这里的ConsoleApp）</code>—<code>添加引用</code>—<code>浏览</code>，选择引用文件</li>
+</ol>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040192.png" alt="image-20220118132103055"></p>
+<ol start="3">
+<li><strong>引用后</strong>：可以双击该类库可在对象浏览器中查看，而在程序中使用<code>using System.Windows.Forms;</code>导入，因为目前程序中未使用代码颜色为灰色，使用后会变成黑色</li>
+</ol>
+  <img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040770.png" alt="image-20220118132437172"  />
+
+<ol start="4">
+<li>但是我们可能会遇上一些情况：当使用某个库时，发现这个库是依赖于其他库，于是还得引用其他库，很不方便！这里微软提供了共享代码的机制——NuGet技术，将该库和该库引用的其他库打包成包文件，在线发布供人引用，而Nuget作为包管理开发工具。<ul>
+<li>将包引用到解决方案Solution中：<code>右击解决方案</code>-&gt;<code>管理解决方案的Nuget程序包</code>，搜索并引用</li>
+<li>将包引用到项目Project中：<code>右击项目内的引用</code>-&gt;<code>管理Nuget程序包</code>，搜索并引用</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h5 id="2-2-项目引用-白盒引用"><a href="#2-2-项目引用-白盒引用" class="headerlink" title="2.2 项目引用(白盒引用)"></a>2.2 项目引用(白盒引用)</h5><p>项目引用的文件有源代码，是自己创建或者别人开源项目</p>
+<ol>
+<li>引用项目Project到解决方案Solution：</li>
+</ol>
+<ul>
+<li><p>将别人项目添加到解决方案中：<code>解决方案</code>-&gt;<code>右键添加</code>-&gt;<code>现有项目</code>，将项目引用进来</p>
+<img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040467.png" alt="image-20220118134931364" style="zoom: 80%;" />
+</li>
+<li><p>新建自己项目添加到解决方案：<code>解决方案</code>-&gt;<code>右键添加</code>-&gt;<code>新建项目</code>，新建一些自己想建立的项目，比如类库</p>
+<img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040208.png" alt="image-20220118134957989" style="zoom: 80%;" /></li>
+</ul>
+<ol start="2">
+<li>引用解决方案中的项目otherProject到自己项目myProject：</li>
+</ol>
+<ul>
+<li><code>右击项目Project</code>-&gt;<code>添加</code>-&gt;<code>引用</code>，开始引用</li>
+</ul>
+<img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040225.png" alt="image-20220118135629403" style="zoom: 80%;" />
+
+<ul>
+<li><p><code>项目</code>-&gt;<code>解决方案</code>-&gt;<code>勾选上待引用的库</code>，点击确定完成引用</p>
+<img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040881.png" alt="image-20220118135932861" style="zoom: 80%;" />
+
+<img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121040362.png" alt="image-20220118140016189" style="zoom:80%;" /></li>
+</ul>
+<h3 id="三、VS导航栏"><a href="#三、VS导航栏" class="headerlink" title="三、VS导航栏"></a>三、VS导航栏</h3><blockquote>
+<p>这里想介绍一下Visual Studio的导航栏，进一步介绍VS功能，后续不会在学习中产生工具不跟手的情况</p>
+</blockquote>
+<p>1.文件：可以新建、打开、添加、保存项目文件</p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041611.png" alt="Img"></p>
+<ol start="2">
+<li>编辑：在编写代码时，会用上的操作及其对应的快捷键，这里强调<code>高级</code>中的<code>设置文档的格式</code>，当编写完代码后，使用该命令会自动整理程序格式</li>
+</ol>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041898.png" alt="image-20220118140331266"></p>
+<ol start="3">
+<li>视图：设置是否显示一些工具或者状态窗口，比如左右侧边栏和底部调试互动区显示哪些工具</li>
+</ol>
+<img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041604.png" alt="image-20220118140715613"  />
+
+<ol start="4">
+<li>Git：代码托管，可以使用Github作为远程仓库，也可以使用本地仓库进行版本控制</li>
+</ol>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041971.png" alt="image-20220118140820971"></p>
+<ol start="5">
+<li>项目：右击资源管理器里的项目Project也能实现</li>
+</ol>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041547.png" alt="image-20220118140946494"></p>
+<ol start="6">
+<li>生成：对程序打包，生成exe等各类文件</li>
+</ol>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041972.png" alt="image-20220118141045925"></p>
+<ol start="7">
+<li>调试、测试和分析：对软件进行调试、测试和分析（后续会详解）</li>
+</ol>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041901.png" alt="image-20220118141115830"></p>
+<ol start="8">
+<li>工具：负责对VS进行工具管理，获取工具和功能就是跳转Vs installer，选项可以对VS进行设置等</li>
+</ol>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041940.png" alt="image-20220118141256967"></p>
+<ol start="9">
+<li><p>扩展：VS给使用提供可玩性极高的扩展插件，让VS更加好用，比如我代码区的二次元背景就是安装了ClaudiaIDE插件（VScode用户应该不陌生）<img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041924.png" alt="image-20220118141729486"></p>
+</li>
+<li><p>窗口：对窗口显示进行管理，主要是窗口布局</p>
+</li>
+<li><p>帮助：最有用的功能之一，可以实时查看文档，并使用<code>F1</code>键完成搜索</p>
+</li>
+</ol>
+<p>比如我在代码区，光标悬浮在String上就能看到简介，进一步点击F1键，唤起帮助，搜索该类或者该符号意义</p>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041021.gif" alt="VeryCapture_20220118142141"></p>
+<hr>
+<h2 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a><center>学习方法</h2><p>介绍到这里，完全算是对C#语言和Visual Studio的入门，借这里对C#学习方法的讨论，想强调如何学习一门计算机语言或者说一类计算机知识</p>
+<blockquote>
+<p>回到最原汁原味的环境</p>
+</blockquote>
+<p>学习知识时候，应该找到最官方的书籍和资料，而不是选择那些拼凑的资料，书在于精而不在于多。学习C#则需要翻看微软文档，或常按F1，可在VS的帮助里查看，或者在官网中查看，这里提供官网链接：</p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/fundamentals/">Net 文档</a>：介绍Net的思想和模型，概念性东西比较多</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/">微软 C#文档</a>：将C#的一些概念讲得很透彻，并且提供C#编程指南和语法参考</p>
+<p>编程指南：把C#学习分为两个部分，语言部分和Net平台部分，符合语言-&gt;类库-&gt;平台的学习路线</p>
+<p>语法参考：编程工具书，可以查阅一些语法的用法，并配有可运行实例</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/visualstudio/ide/default-keyboard-shortcuts-in-visual-studio?view=vs-2022">快捷键使用</a>：常用的一些快捷键可以在编程时候学习，提升自己的代码速度还防止键盘手</p>
+</li>
+</ol>
+<p><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041734.png" alt="image-20220118143148073"></p>
+<blockquote>
+<p>注意知识的衔接性</p>
+</blockquote>
+<p>这一点我很赞同刘铁猛老师的观点，他在讲解时，没有按照所谓的路线，先讲解一些语言枯燥的东西，然后再去使用，而是不断地武装自己。类似于，小学教乘法时，会先将加法，把加法练会了，我们自然而然就会乘法，实现知识的衔接。这一点，我们学习中应该进行借鉴，上手速度会有很大提升，而且没在使用中成长，是无法知道你的程序会出现什么bug</p>
+<blockquote>
+<p>多敲代码</p>
+</blockquote>
+<p>刘老师的很多例程真的很经典，能够让你在不断改进某一个程序的时候，对理论知识进行不断地探索，并且能让你有所思考，自己主动想着能不能再进一步。我反正在学习其代码的时候，学习其风格，思考问题的全面性，受益匪浅！</p>
+<blockquote>
+<p>持续进步</p>
+</blockquote>
+<p>刘老师很谦虚的表示看完视频并不代表学完了C#还应该继续使用一些搜索引擎和官方文档，进行进一步地学习，持续进步才能成为这方面的大牛！这里也希望大家能成为该语言方面的大牛！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://supervisen.github.io">Visen Cao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://supervisen.github.io/2021/12/3.1Csharp%E7%AC%94%E8%AE%B01/">https://supervisen.github.io/2021/12/3.1Csharp笔记1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://supervisen.github.io" target="_blank">Visen</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div><div class="post_share"><div class="social-share" data-image="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121039027.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/1.1Win%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85/"><img class="prev-cover" src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121035954.jpeg" onerror="onerror=null;src='https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121056143.jpeg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Win系统重装</div></div></a></div><div class="next-post pull-right"><a href="/2021/11/0.2%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/"><img class="next-cover" src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205120929331.jpeg" onerror="onerror=null;src='https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121056143.jpeg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Picgo配置Github图床</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/01/3.2Csharp%E7%AC%94%E8%AE%B02/" title="CSharp系列（二）类Class的概念"><img class="cover" src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041024.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-01-25</div><div class="title">CSharp系列（二）类Class的概念</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%AD%90"><span class="toc-text">引子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSharp%E4%B8%8ENet"><span class="toc-text">CSharp与Net</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81Csharp%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">一、Csharp是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Net%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E4%B8%A4%E8%80%85%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9F"><span class="toc-text">二、Net是什么？两者的关系？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-text">开发环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85"><span class="toc-text">一、安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81C-in-VS"><span class="toc-text">二、C# in VS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-C-%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-text">1. C#文件结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%B1%BB%E5%BA%93%E7%9A%84%E5%BC%95%E7%94%A8"><span class="toc-text">2. 类库的引用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-DLL%E5%BC%95%E7%94%A8-%E9%BB%91%E7%9B%92%E5%BC%95%E7%94%A8"><span class="toc-text">2.1 DLL引用(黑盒引用)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E9%A1%B9%E7%9B%AE%E5%BC%95%E7%94%A8-%E7%99%BD%E7%9B%92%E5%BC%95%E7%94%A8"><span class="toc-text">2.2 项目引用(白盒引用)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81VS%E5%AF%BC%E8%88%AA%E6%A0%8F"><span class="toc-text">三、VS导航栏</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95"><span class="toc-text">学习方法</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121056797.jpeg')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Visen Cao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">持志似心痛，痛心步难停</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script></div><script src="https://live2d-widget-right.oss-cn-hangzhou.aliyuncs.com/canvas-nest.min.js"></script><div class="aplayer no-destroy" data-id="7058412570" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

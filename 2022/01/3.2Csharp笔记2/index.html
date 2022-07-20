@@ -1,0 +1,421 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CSharp系列（二）类Class的概念 | Visen</title><meta name="keywords" content="学习笔记"><meta name="author" content="Visen Cao"><meta name="copyright" content="Visen Cao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="引子&amp;nbsp;&amp;nbsp;👋这里是Visen.我参考刘老师课程和一些文档，对接下来更新的Csharp基础学习的框架进行了梳理。 主体部分如下所示，而为了方便其理解，会更新一些扩展内容，使得整个主体具有连贯性，以保证知识的完整性和学习的流畅度  面向对象思想：理解类的思想，贯穿整个章节 Csharp的词法结构：讲解C#语言程序如何被编译，有哪些基础元素 Csharp基本概念：类型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSharp系列（二）类Class的概念">
+<meta property="og:url" content="https://supervisen.github.io/2022/01/3.2Csharp%E7%AC%94%E8%AE%B02/index.html">
+<meta property="og:site_name" content="Visen">
+<meta property="og:description" content="引子&amp;nbsp;&amp;nbsp;👋这里是Visen.我参考刘老师课程和一些文档，对接下来更新的Csharp基础学习的框架进行了梳理。 主体部分如下所示，而为了方便其理解，会更新一些扩展内容，使得整个主体具有连贯性，以保证知识的完整性和学习的流畅度  面向对象思想：理解类的思想，贯穿整个章节 Csharp的词法结构：讲解C#语言程序如何被编译，有哪些基础元素 Csharp基本概念：类型">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041024.jpeg">
+<meta property="article:published_time" content="2022-01-25T11:50:50.000Z">
+<meta property="article:modified_time" content="2022-05-12T02:57:58.000Z">
+<meta property="article:author" content="Visen Cao">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041024.jpeg"><link rel="shortcut icon" href="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121051907.jpeg"><link rel="canonical" href="https://supervisen.github.io/2022/01/3.2Csharp%E7%AC%94%E8%AE%B02/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CSharp系列（二）类Class的概念',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-12 10:57:58'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/iconfont/iconfont.css"><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121051907.jpeg" onerror="onerror=null;src='https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121055307.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://nwuzmed.ga/"><i class="fa-fw fa fa-flask"></i><span> DAC导航</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-bijiben"></i><span> 笔记本</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/Csharp/"><i class="fa-fw iconfont icon-csharp"></i><span> Csharp</span></a></li><li><a class="site-page child" href="/categories/Python/"><i class="fa-fw iconfont icon-python"></i><span> Python</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa fa-link"></i><span> 博客工具</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="http://guozhivip.com/imgs.html"><i class="fa-fw iconfont icon-charutupian"></i><span> 高清图源</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.emojiall.com/zh-hans"><i class="fa-fw iconfont icon-biaoqingbao"></i><span> 表情包词典</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://console.leancloud.cn/login?from=%2Fapps"><i class="fa-fw iconfont icon-pinglun"></i><span> 评论管理</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.123pan.com/login"><i class="fa-fw iconfont icon-yunpan"></i><span> 123云盘</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuozhe"></i><span> 关于作者</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blackBoard/"><i class="fa-fw iconfont icon-xiaoheiban"></i><span> 小黑板</span></a></li><li><a class="site-page child" href="/heartWay/"><i class="fa-fw iconfont icon-step_count"></i><span> 成长历程</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041024.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Visen</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://nwuzmed.ga/"><i class="fa-fw fa fa-flask"></i><span> DAC导航</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-bijiben"></i><span> 笔记本</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/Csharp/"><i class="fa-fw iconfont icon-csharp"></i><span> Csharp</span></a></li><li><a class="site-page child" href="/categories/Python/"><i class="fa-fw iconfont icon-python"></i><span> Python</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa fa-link"></i><span> 博客工具</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="http://guozhivip.com/imgs.html"><i class="fa-fw iconfont icon-charutupian"></i><span> 高清图源</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.emojiall.com/zh-hans"><i class="fa-fw iconfont icon-biaoqingbao"></i><span> 表情包词典</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://console.leancloud.cn/login?from=%2Fapps"><i class="fa-fw iconfont icon-pinglun"></i><span> 评论管理</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://www.123pan.com/login"><i class="fa-fw iconfont icon-yunpan"></i><span> 123云盘</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw iconfont icon-zuozhe"></i><span> 关于作者</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/blackBoard/"><i class="fa-fw iconfont icon-xiaoheiban"></i><span> 小黑板</span></a></li><li><a class="site-page child" href="/heartWay/"><i class="fa-fw iconfont icon-step_count"></i><span> 成长历程</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CSharp系列（二）类Class的概念</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-25T11:50:50.000Z" title="发表于 2022-01-25 19:50:50">2022-01-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-12T02:57:58.000Z" title="更新于 2022-05-12 10:57:58">2022-05-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Net%E5%BC%80%E5%8F%91/">Net开发</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Net%E5%BC%80%E5%8F%91/Csharp%E5%9F%BA%E7%A1%80/">Csharp基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CSharp系列（二）类Class的概念"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a><center>引子</center></h2><p>&amp;nbsp;&amp;nbsp;👋这里是Visen.我参考刘老师课程和一些文档，对接下来更新的<strong>Csharp基础学习</strong>的框架进行了梳理。</p>
+<p>主体部分如下所示，而为了方便其理解，会更新一些扩展内容，使得整个主体具有连贯性，以保证知识的完整性和学习的流畅度</p>
+<ol>
+<li>面向对象思想：理解类的思想，贯穿整个章节</li>
+<li>Csharp的词法结构：讲解C#语言程序如何被编译，有哪些基础元素</li>
+<li>Csharp基本概念：类型、变量与常量、方法等。方法概述：方法的概念和方法的基础使用（为后续章节准备</li>
+<li>表达式：概述和操作符的介绍</li>
+<li>语句：详细讲解各个语句（foreach穿插进类中的迭代器和接口的理解）</li>
+<li>类前导部分：常量，字段、属性、索引器，方法详解，事件</li>
+<li>类详解：类的成员</li>
+<li>接口详解</li>
+<li>结构</li>
+</ol>
+<p>扩展部分为命名空间、委托、枚举、事件、方法和其他函数成员、结构体</p>
+<p>专项部分：数组、字符串、LINQ、Lambda表达式</p>
+<p>程序由<strong>关键字</strong>、<strong>表达式</strong>和<strong>运算符</strong>组成的<strong>语句</strong>组成</p>
+<p>待更新</p>
+<p>本篇介绍面向对象的思想，可以理解为把架子先摆好，后续把书放上去。在入门的时候，我曾经说过C#程序主体是类，甚至连程序都是类，这也是面向对象语言的特点，该篇可以在复习中慢慢体会。</p>
+<hr>
+<h2 id="何为“面向对象”"><a href="#何为“面向对象”" class="headerlink" title="何为“面向对象”"></a><center>何为“面向对象”</h2><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;我们生活中经常会遇到很多定义或者概念，我相信大家肯定也会困惑，为什么这样定义或者说出于什么目的去把这类事物描述出来</p>
+<p>&amp;nbsp;&amp;nbsp;&amp;nbsp;比如为什么有加法？这个大家肯定都能解释了，是为了满足生活中计算的需要。加法对应的就是加法的逻辑，你脑袋里第一个思考的肯定是两个数对应的位相加，甚至连计算的方法都想好了。</p>
+<p>能不能有一种方法能把这个思考过程表示出来呢？有，面向对象！</p>
+<ol>
+<li>首先我们得有需求，发明东西肯定是为了简便，为了生产。面向对象的需求是，想要<strong>描述出我想编程的所有现实事物</strong>（以汽车为例）</li>
+<li>那现实事物对应哪些特点？我们大脑认出那是辆汽车，肯定是得有四个轮子，有汽车品牌，可以移动等等。那我们<strong>抽象</strong>出来完成<strong>建模</strong>，让我们程序模拟大脑的思考过程。可以得到程序中汽车的模型，以后碰到个东西，程序比对判断是否符合这个模型。符合的话，我们会喊它是一种&#x2F;类汽车（我们定义的<strong>汽车类</strong>）—— <strong>定义类</strong>：从实际到抽象</li>
+<li>前一步只是抽象出汽车这个概念呀，那怎么描述现实的汽车呢？对啊，那比如我碰到个现实中的比亚迪电动汽车（<strong>待描述的对象</strong>），程序怎么用刚才定义的汽车类去描述？有没有发现其实这是<strong>定义类</strong>的逆过程，<strong>把抽象转化成现实事物</strong>，我们把这过程称为<strong>实例化</strong>，程序中表示的对象称为<strong>实例</strong></li>
+</ol>
+<p>思考完后，进行总结：</p>
+<blockquote>
+<p>类（class）是对现实世界事物的模型，将现实事物进行抽象，事物包括“物质”（实体）与“运动”（逻辑）</p>
+</blockquote>
+<p>比如，汽车有四个轮子（实体）和能够运动（逻辑）</p>
+<blockquote>
+<p>对象也叫实例，现实中称为对象，程序世界称为实例，是类经过实例化后得到的内存中的实体</p>
+</blockquote>
+<p>通过类，我们可以创建对象，这就是实例化</p>
+<blockquote>
+<p>面向对象编程也就是针对现实中的具体事物进行编程，包含定义类和实例化的过程</p>
+</blockquote>
+<hr>
+<h2 id="CSharp里的面向对象"><a href="#CSharp里的面向对象" class="headerlink" title="CSharp里的面向对象"></a>CSharp里的面向对象</h2><p>理解完面向对象编程，那Csharp被设计如何表现或实现面向对象呢？使用过其他的面向对象语言（C++、Java、Python、Javascript等）的小伙伴，可以发现只是大同小异</p>
+<h3 id="1-定义类"><a href="#1-定义类" class="headerlink" title="1.定义类"></a>1.定义类</h3><blockquote>
+<p>Csharp中采用单词Class的程序块表示某个<strong>类</strong>以及该类的特征（<strong>成员</strong>）</p>
+</blockquote>
+<p>我们先介绍类的三大成员，也就是类的特征。我们翻看微软的某个class的时候，都能发现这里介绍的这三大成员占了大半部分（后续成员会在后面进行讲解）</p>
+<ul>
+<li><p><strong>属性Property</strong>：存储数据，组合起来表示类或者对象当前的<strong>状态</strong>。比如car汽车类，有Price价格属性（car.Price）、Brand品牌属性（car.Brand）、Power能源属性（car.Power）等等</p>
+</li>
+<li><p><strong>方法Method</strong>：由C语言的函数function进化而来，表示类或者对象能做什么<strong>（动作）</strong></p>
+</li>
+<li><p><strong>事件Event</strong>：类或者对象通知其他类或者对象的机制（<strong>不同类或对象的通信</strong>），为C#所特有（Java是通过其他方法实现），但记住不能滥用</p>
+</li>
+</ul>
+<p>虽然微软文档中类Class基本都有这三大成员，但是某些特殊类或对象在这三个成员的侧重点不同</p>
+<ul>
+<li>模型类或对象侧重属性：如Entity Framework</li>
+<li>工具类或对象侧重方法：如Math、Console</li>
+<li>通知类或对象侧重事件：如各种Timer</li>
+</ul>
+<p>这里我们以上述的比亚迪电动汽车（<strong>对象</strong>）为例，它的特征是</p>
+<ul>
+<li>标价20万</li>
+<li>品牌是比亚迪</li>
+<li>能源是电池</li>
+<li>具有四个轮子</li>
+<li>能够移动</li>
+</ul>
+<p>定义的汽车类，它应该具有特征：价格、品牌、能源、轮子数量、能够移动</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">car</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//属性</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> Price;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> Brand;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> Power;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> WheelNum；</span><br><span class="line">        </span><br><span class="line">    <span class="comment">//方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Move</span>() <span class="comment">//注意方法名的首字母大写</span></span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;I can move&quot;</span>); <span class="comment">//命令行输出I can move</span></span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="comment">//事件（这里无）</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-实例化"><a href="#2-实例化" class="headerlink" title="2.实例化"></a>2.实例化</h3><blockquote>
+<p>Csharp中使用<strong>New操作符</strong>创建类的实例，并将实例附着到<strong>引用变量</strong>上</p>
+</blockquote>
+<p>正常创建类的实例</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">car mycar = <span class="keyword">new</span> car(); <span class="comment">//实例化，并使用引用变量mycar来作为附着</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>思考：如果没有引用变量呢？</p>
+<p>x.y中的点操作符：成员访问操作符，能够访问类、对象或方法的成员。x.y语义上表示”x里的y成员“</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">new</span> car()).Text = <span class="string">&quot;My car&quot;</span>; <span class="comment">//创建实例，并将实例的Text属性赋值为My car，未附着，自动回收空间</span></span><br><span class="line">(<span class="keyword">new</span> car()).ShowDialog[]; <span class="comment">//创建实例，并将实例通过窗口显示，未附着，自动回收空间</span></span><br></pre></td></tr></table></figure>
+
+<p>我们发现，系统读取到到<code>;</code>，代表该行程序已经结束，系统会自动检查该行程序中某些数据是否被使用（是否附着到引用变量上），如果未使用，则回收该部分空间。表现为<strong>不使用引用变量，就无法连续地访问和操作同一个实例</strong>。</p>
+<p>更改后：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">car mycar; <span class="comment">//声明属于car类的引用变量mycar(告诉系统，需要使用该数据，别销毁)</span></span><br><span class="line">mycar = <span class="keyword">new</span> car(); <span class="comment">//实例化</span></span><br><span class="line"><span class="comment">//可简写为 car mycar = new car(); </span></span><br><span class="line"></span><br><span class="line">mycar.Text = <span class="string">&quot;My car&quot;</span>; <span class="comment">//把系统保留的引用变量mycar的Text属性赋值My car</span></span><br><span class="line">mycar.ShowDialog(); <span class="comment">//把系统保留的引用变量mycar通过窗体展示</span></span><br></pre></td></tr></table></figure>
+
+<p>总结：按照刘铁猛老师的讲解，引用变量与实例的关系可以理解为孩子与气球</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//有孩子（引用变量）没有气球（实例）❌</span></span><br><span class="line">car mycar;</span><br><span class="line"></span><br><span class="line"><span class="comment">//有气球（实例）没有孩子（引用变量）❌</span></span><br><span class="line"><span class="keyword">new</span> car();</span><br><span class="line"></span><br><span class="line"><span class="comment">//多个孩子（引用变量）牵着同一个气球（实例）✅</span></span><br><span class="line">car mycar1; </span><br><span class="line">car mycar2;</span><br><span class="line">mycar1 = <span class="keyword">new</span> car();</span><br><span class="line">mycar2 =  mycar1; <span class="comment">//多个孩子（引用变量）牵着同一个气球（实例）</span></span><br><span class="line">mycar1.Text = <span class="string">&quot;mycar&quot;</span>;</span><br><span class="line">mycar2.ShowDialog(); </span><br></pre></td></tr></table></figure>
+
+<h2 id="静态成员和实例成员"><a href="#静态成员和实例成员" class="headerlink" title="静态成员和实例成员"></a>静态成员和实例成员</h2><p>定义类的时候，相信大家应该发现了Move方法前面有个<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/keywords/static"><strong>static关键字</strong></a>，加与不加static声明的成员有什么不同呢？</p>
+<blockquote>
+<p>关键字是预定义的保留标识符，作用是让程序员标记和区分不同的使用情况</p>
+</blockquote>
+<p>这里的static用来声明静态（static）成员，而静态成员对应着实例成员。成员不仅包括字段、方法、属性、运算符、事件和构造函数，还包括类class，类中的“成员”可以是类</p>
+<ul>
+<li>静态（static）成员，也叫类成员，在语义上表示“类的成员”</li>
+<li>实例（非静态）成员，也叫对象成员，在语义上表示“对象的成员”</li>
+</ul>
+<blockquote>
+<p><strong>通俗理解</strong>：实例表示的是对象（类实例后）的状态，静态表示的是该类的状态。理解起来就像某班级某学生的学习状态（学习刻苦，态度认真）和该班的学生状态（尖子班，学习氛围浓郁）</p>
+</blockquote>
+<p>那么这两种成员声明方式该如何选择，或者回到那个问题，有什么不同？</p>
+<table>
+<thead>
+<tr>
+<th align="center">不同</th>
+<th align="left">静态成员</th>
+<th align="left">非静态成员</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">访问方法</td>
+<td align="left">必须由类名调用，不能使用对象调用<br />静态成员只属于类，访问时需使用“<strong>类名.静态成员</strong>”</td>
+<td align="left"><strong>必须实例化</strong>后，再使用“<strong>对象.实例成员</strong>”进行访问</td>
+</tr>
+<tr>
+<td align="center">不同类的成员</td>
+<td align="left"><strong>静态类</strong>不能实例化，只能有静态成员不能有实例成员</td>
+<td align="left"><strong>非静态类</strong>可以有静态成员和非静态成员</td>
+</tr>
+<tr>
+<td align="center">类第一次<strong>加载时内存分配</strong></td>
+<td align="left">该类下的所有的静态成员都会被加载<br />静态成员只分配一次，有且只有一份存储空间<br />无论new出多少个实例，它也只是有那一个空间静态成员会被加载到静态存储区，直到程序退出时才会被释放</td>
+<td align="left">实例成员有多少个对象，就会创建多少个对象<br />每产生一个实例都要重新分配一个存储空间</td>
+</tr>
+</tbody></table>
+<p>总结：</p>
+<ol>
+<li><p>静态成员不能实例化，只能由类名调用——“<strong>类名.静态成员</strong>”；第一次加载时，会分配一个存储空间，new也是引用这部分空间</p>
+</li>
+<li><p>非静态成员<strong>必须实例化</strong>后，再使用“<strong>对象.实例成员</strong>”进行访问；有多少个对象，就会创建多少个对象，需注意内存管理</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://supervisen.github.io">Visen Cao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://supervisen.github.io/2022/01/3.2Csharp%E7%AC%94%E8%AE%B02/">https://supervisen.github.io/2022/01/3.2Csharp笔记2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://supervisen.github.io" target="_blank">Visen</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div><div class="post_share"><div class="social-share" data-image="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121041024.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/5.1NURBS%E6%9B%B2%E7%BA%BF/"><img class="prev-cover" src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121044590.jpeg" onerror="onerror=null;src='https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121056143.jpeg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">NURBS曲线（待整理）</div></div></a></div><div class="next-post pull-right"><a href="/2021/12/2.1%E6%93%8D%E4%BD%9CExcel%E6%95%B0%E6%8D%AE%E5%A1%AB%E5%85%A5Word%E6%8C%87%E5%AE%9A%E5%8C%BA%E5%9F%9F/"><img class="next-cover" src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121038082.jpeg" onerror="onerror=null;src='https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121056143.jpeg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python实现Word自动化</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/12/3.1Csharp%E7%AC%94%E8%AE%B01/" title="CSharp系列（一）入门"><img class="cover" src="https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121039027.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-04</div><div class="title">CSharp系列（一）入门</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%AD%90"><span class="toc-text">引子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E2%80%9C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E2%80%9D"><span class="toc-text">何为“面向对象”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSharp%E9%87%8C%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">CSharp里的面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="toc-text">1.定义类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="toc-text">2.实例化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%92%8C%E5%AE%9E%E4%BE%8B%E6%88%90%E5%91%98"><span class="toc-text">静态成员和实例成员</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://supervisen-imgbed.oss-cn-hangzhou.aliyuncs.com/img/202205121056797.jpeg')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Visen Cao</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">持志似心痛，痛心步难停</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  const $mermaidWrap = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaidWrap.length) {
+    window.runMermaid = () => {
+      window.loadMermaid = true
+      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+      Array.from($mermaidWrap).forEach((item, index) => {
+        const mermaidSrc = item.firstElementChild
+        const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+        const mermaidID = 'mermaid-' + index
+        const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+        mermaid.mermaidAPI.render(mermaidID, mermaidDefinition, (svgCode) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svgCode)
+        })
+      })
+    }
+
+    const loadMermaid = () => {
+      window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    }
+
+    window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+  }
+})()</script></div><script src="https://live2d-widget-right.oss-cn-hangzhou.aliyuncs.com/canvas-nest.min.js"></script><div class="aplayer no-destroy" data-id="7058412570" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
