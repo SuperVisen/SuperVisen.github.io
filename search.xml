@@ -15,16 +15,8 @@
           
           <category> 疯狂安利 </category>
           
-          <category> 软件分享 </category>
-          
       </categories>
       
-      
-        <tags>
-            
-            <tag> 安利 </tag>
-            
-        </tags>
       
     </entry>
     
@@ -42,7 +34,7 @@
           
           <category> 操作指南 </category>
           
-          <category> Win系统 </category>
+          <category> 软件使用 </category>
           
       </categories>
       
@@ -72,12 +64,6 @@
       </categories>
       
       
-        <tags>
-            
-            <tag> 安利 </tag>
-            
-        </tags>
-      
     </entry>
     
     
@@ -94,7 +80,7 @@
           
           <category> 操作指南 </category>
           
-          <category> 博客相关 </category>
+          <category> Hexo博客 </category>
           
       </categories>
       
@@ -119,7 +105,7 @@
       
       <categories>
           
-          <category> CAGD </category>
+          <category> 计算机科学，计算机图学 </category>
           
       </categories>
       
@@ -194,7 +180,7 @@
           
           <category> 操作指南 </category>
           
-          <category> Win系统 </category>
+          <category> 软件使用 </category>
           
       </categories>
       
@@ -275,7 +261,7 @@
           
           <category> 操作指南 </category>
           
-          <category> 软件使用 </category>
+          <category> Hexo博客 </category>
           
       </categories>
       
@@ -302,7 +288,7 @@
           
           <category> 操作指南 </category>
           
-          <category> 博客相关 </category>
+          <category> Hexo博客 </category>
           
       </categories>
       
