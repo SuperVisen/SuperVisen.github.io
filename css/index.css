@@ -4183,7 +4183,7 @@ h1.page-title + .tag-cloud-list {
 }
 #rightside {
   position: fixed;
-  right: -48px;
+  right: -40px;
   bottom: 15px;
   z-index: 100;
   opacity: 0;
